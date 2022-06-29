@@ -1,20 +1,20 @@
 import { useState, useEffect, useMemo } from "react";
 import { songProps } from "../types/song.types";
 
-type props = songProps & { audio: any; playing: boolean };
+export type songUpdatedProps = songProps & { audio: any; playing: boolean };
 
 export const useMultiAudio = (songs: songProps[]) => {
   const playList = useMemo(() => {
     return songs.map((song) => {
       return {
         ...song,
-        audio: new Audio(song.cover_image_path),
+        audio: new Audio(song.music_file_path),
         playing: false,
       };
     });
   }, [songs]);
 
-  const [players, setPlayers] = useState<props[]>([]);
+  const [players, setPlayers] = useState<songUpdatedProps[]>([]);
 
   useEffect(() => {
     setPlayers(playList);

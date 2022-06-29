@@ -18,7 +18,10 @@ const SongList: FunctionComponent<{
   }
   return (
     <main className={styles.wrapper}>
-      {players && players.map((song) => <SongItem key={song.id} song={song} />)}
+      {players &&
+        players.map((song, i) => (
+          <SongItem key={song.id} song={song} toggle={toggle(i)} />
+        ))}
     </main>
   );
 };
