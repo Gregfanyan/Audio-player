@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { useMultiAudio } from "../../hooks/useAudio";
 import { songProps } from "../../types/song.types";
 import SongItem from "../SongItem";
 import styles from "./SongList.module.css";
@@ -7,6 +8,8 @@ const SongList: FunctionComponent<{
   error: any;
   isLoaded: boolean;
 }> = ({ songs, error, isLoaded }) => {
+  const { players, toggle } = useMultiAudio(songs);
+
   if (error !== null) {
     return <div> {error}</div>;
   }
@@ -15,7 +18,7 @@ const SongList: FunctionComponent<{
   }
   return (
     <main className={styles.wrapper}>
-      {songs && songs.map((song) => <SongItem key={song.id} song={song} />)}
+      {players && players.map((song) => <SongItem key={song.id} song={song} />)}
     </main>
   );
 };

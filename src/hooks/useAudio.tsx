@@ -1,21 +1,63 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { songProps } from "../types/song.types";
 
-export const useAudio = (url: string) => {
-  const [audio] = useState(new Audio(url));
-  const [playing, setPlaying] = useState(false);
+type props = songProps & { audio: any; playing: boolean };
 
-  const toggle = () => setPlaying(!playing);
+export const useMultiAudio = (songs: songProps[]) => {
+  const playList = useMemo(() => {
+    return songs.map((song) => {
+      return {
+        ...song,
+        audio: new Audio(song.cover_image_path),
+        playing: false,
+      };
+    });
+  }, [songs]);
+
+  const [players, setPlayers] = useState<props[]>([]);
 
   useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [audio, playing]);
+    setPlayers(playList);
+  }, [playList]);
+
+  const toggle = (targetIndex: number) => () => {
+    const newPlayers = [...players];
+    const currentIndex = players.findIndex((p) => p.playing === true);
+    if (currentIndex !== -1 && currentIndex !== targetIndex) {
+      newPlayers[currentIndex].playing = false;
+      newPlayers[targetIndex].playing = true;
+    } else if (currentIndex !== -1) {
+      newPlayers[targetIndex].playing = false;
+    } else {
+      newPlayers[targetIndex].playing = true;
+    }
+    setPlayers(newPlayers);
+  };
 
   useEffect(() => {
-    audio.addEventListener("ended", () => setPlaying(false));
+    players.forEach((player, i) => {
+      players[i].playing ? player.audio.play() : player.audio.pause();
+    });
+  }, [players]);
+
+  useEffect(() => {
+    players.forEach((player, i) => {
+      player.audio.addEventListener("ended", () => {
+        const newPlayers = [...players];
+        newPlayers[i].playing = false;
+        setPlayers(newPlayers);
+      });
+    });
     return () => {
-      audio.removeEventListener("ended", () => setPlaying(false));
+      players.forEach((player, i) => {
+        player.audio.removeEventListener("ended", () => {
+          const newPlayers = [...players];
+          newPlayers[i].playing = false;
+          setPlayers(newPlayers);
+        });
+      });
     };
-  }, [audio]);
+  }, [players]);
 
-  return { playing, toggle };
+  return { players, toggle };
 };
