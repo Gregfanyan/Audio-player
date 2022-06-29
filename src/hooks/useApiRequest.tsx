@@ -3,7 +3,7 @@ import axios from "axios";
 const useApiRequest = (url: string) => {
   const [songs, setSongs] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<null | string>(null);
 
   useEffect(() => {
     const fetchData = () => {
