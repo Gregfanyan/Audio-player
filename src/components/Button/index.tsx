@@ -11,7 +11,7 @@ function Button({ children, onClick, isLiked }: Props) {
   return (
     <button
       style={{
-        color: isLiked ? "rgba(171, 2, 26, 0.95)" : "inherit",
+        color: isLiked ? "rgba(171, 2, 26, 0.95)" : "rgb((27, 25, 25)",
         ...style,
       }}
       onClick={onClick}

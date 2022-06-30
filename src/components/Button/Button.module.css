@@ -14,7 +14,6 @@
 
 .btn:hover {
   transform: scale(1.2);
-  color: rgba(171, 2, 26, 0.95);
   opacity: 1;
   box-shadow: 0 6px 9px rgba(33, 33, 33, 0.1), 0 6px 16px rgba(33, 33, 33, 0.15);
 }

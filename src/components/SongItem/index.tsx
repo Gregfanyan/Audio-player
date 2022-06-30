@@ -11,10 +11,10 @@ const SongItem: FunctionComponent<{
 }> = ({ song, toggle }) => {
   return (
     <main className={styles.wrapper}>
-      <h2>{song.name}</h2>
       <Button style={{ margin: "0 auto" }} onClick={toggle}>
         <FontAwesomeIcon icon={song.playing ? "pause" : "play"} size="5x" />
       </Button>
+      <h2>{song.name}</h2>
       <img src={song.cover_image_path} alt={song.description} />
       <Like id={song.id} />
     </main>
