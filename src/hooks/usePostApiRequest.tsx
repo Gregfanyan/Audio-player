@@ -1,10 +1,10 @@
 import axios from "axios";
-
+import { apiKey, postUrl } from "../services/api";
 const usePostApiRequest = () => {
   const likeSong = async (id: string) => {
     await axios
       .post(
-        `https://api-stg.jam-community.com/interact/like?apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8`,
+        `${postUrl}?apikey=${apiKey}`,
         new URLSearchParams({
           id: id,
         }),
@@ -14,7 +14,7 @@ const usePostApiRequest = () => {
           },
         }
       )
-      .then((res) => res.status)
+      .then((res) => console.log("res.status", res.status))
       .catch((err) => console.warn(err.response));
   };
   return { likeSong };
