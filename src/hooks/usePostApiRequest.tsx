@@ -14,7 +14,7 @@ const usePostApiRequest = () => {
           },
         }
       )
-      .then((res) => console.log("res.status", res.status))
+      .then((res) => res)
       .catch((err) => console.warn(err.response));
   };
   return { likeSong };
