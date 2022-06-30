@@ -1,10 +1,13 @@
+import React from "react";
 import axios from "axios";
+import { apiKey, postUrl } from "../services/api";
 
 const usePostApiRequest = () => {
+  const [isLiked, setIsLiked] = React.useState<boolean>(false);
   const likeSong = async (id: string) => {
     await axios
       .post(
-        `https://api-stg.jam-community.com/interact/like?apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8`,
+        `${postUrl}?apikey=${apiKey}`,
         new URLSearchParams({
           id: id,
         }),
@@ -14,10 +17,13 @@ const usePostApiRequest = () => {
           },
         }
       )
-      .then((res) => res.status)
+      .then((res) => {
+        console.log("res", res);
+        setIsLiked(true);
+      })
       .catch((err) => console.warn(err.response));
   };
-  return { likeSong };
+  return { likeSong, isLiked };
 };
 
 export default usePostApiRequest;

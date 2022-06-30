@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
+  text-transform: capitalize;
+  padding: 25px;
+  background-color: rgb(27, 25, 25);
+  color: #fff;
+}

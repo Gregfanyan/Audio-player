@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const useApiRequest = (url: string) => {
+const useGetApiRequest = (url: string) => {
   const [songs, setSongs] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<null | string>(null);
@@ -23,4 +23,4 @@ const useApiRequest = (url: string) => {
   return { error, isLoaded, songs };
 };
 
-export default useApiRequest;
+export default useGetApiRequest;
