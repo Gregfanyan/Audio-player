@@ -11,8 +11,8 @@ const SongItem: FunctionComponent<{
 }> = ({ song, toggle }) => {
   return (
     <main className={styles.wrapper}>
-      <div>{song.name}</div>
-      <Button onClick={toggle}>
+      <h2>{song.name}</h2>
+      <Button style={{ margin: "0 auto" }} onClick={toggle}>
         <FontAwesomeIcon icon={song.playing ? "pause" : "play"} size="5x" />
       </Button>
       <img src={song.cover_image_path} alt={song.description} />

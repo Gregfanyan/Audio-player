@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMultiAudio } from "../../hooks/useAudio";
 import { songProps } from "../../types/song.types";
 import SongItem from "../SongItem";
 import styles from "./SongList.module.css";
+
 const SongList: FunctionComponent<{
   songs: songProps[];
   error: any;
@@ -14,7 +16,9 @@ const SongList: FunctionComponent<{
     return <div> {error}</div>;
   }
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <FontAwesomeIcon className={styles.spinner} icon="spinner" size="5x" />
+    );
   }
   return (
     <main className={styles.wrapper}>

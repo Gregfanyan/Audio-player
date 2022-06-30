@@ -3,9 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { faPlay, faHeart, faPause } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlay,
+  faHeart,
+  faPause,
+  faSpinner,
+} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-library.add(faPlay, faHeart, faPause);
+library.add(faPlay, faHeart, faPause, faSpinner);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

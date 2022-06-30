@@ -1,6 +1,9 @@
+import React from "react";
 import axios from "axios";
 import { apiKey, postUrl } from "../services/api";
+
 const usePostApiRequest = () => {
+  const [isLiked, setIsLiked] = React.useState<boolean>(false);
   const likeSong = async (id: string) => {
     await axios
       .post(
@@ -14,10 +17,13 @@ const usePostApiRequest = () => {
           },
         }
       )
-      .then((res) => res)
+      .then((res) => {
+        console.log("res", res);
+        setIsLiked(true);
+      })
       .catch((err) => console.warn(err.response));
   };
-  return { likeSong };
+  return { likeSong, isLiked };
 };
 
 export default usePostApiRequest;
