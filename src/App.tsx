@@ -4,6 +4,7 @@ import useGetApiRequest from "./hooks/useGetApiRequest";
 import { url } from "./services/api";
 import Header from "./components/Header";
 import styles from "./App.module.css";
+
 function App() {
   const { songs, error, isLoaded } = useGetApiRequest(url);
   return (

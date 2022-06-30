@@ -7,7 +7,7 @@ import Button from "../Button";
 
 const SongItem: FunctionComponent<{
   song: songUpdatedProps;
-  toggle: any;
+  toggle: () => void;
 }> = ({ song, toggle }) => {
   return (
     <main className={styles.wrapper}>
