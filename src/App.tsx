@@ -7,6 +7,7 @@ import styles from "./App.module.css";
 
 function App() {
   const { songs, error, isLoaded } = useGetApiRequest(url);
+  console.log("songs", songs);
   return (
     <>
       <Header />
