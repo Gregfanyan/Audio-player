@@ -4,6 +4,7 @@ import { useMultiAudio } from "../../hooks/useAudio";
 import { songProps } from "../../types/song.types";
 import SongItem from "../SongItem";
 import styles from "./SongList.module.css";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const SongList: FunctionComponent<{
   songs: songProps[];
@@ -17,7 +18,7 @@ const SongList: FunctionComponent<{
   }
   if (!isLoaded) {
     return (
-      <FontAwesomeIcon className={styles.spinner} icon="spinner" size="5x" />
+      <FontAwesomeIcon className={styles.spinner} icon={faSpinner} size="5x" />
     );
   }
   return (
