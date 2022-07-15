@@ -8,11 +8,10 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const SongList: FunctionComponent<{
   songs: songProps[];
-  error: any;
+  error: null | string;
   isLoaded: boolean;
 }> = ({ songs, error, isLoaded }) => {
   const { players, toggle } = useMultiAudio(songs);
-
   if (error !== null) {
     return <div> {error}</div>;
   }
