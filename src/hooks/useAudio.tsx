@@ -1,7 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import { songProps } from "../types/song.types";
 
-export type songUpdatedProps = songProps & { audio: any; playing: boolean };
+export type songUpdatedProps = songProps & {
+  audio: HTMLAudioElement;
+  playing: boolean;
+};
 
 export const useMultiAudio = (songs: songProps[]) => {
   const playList = useMemo(() => {

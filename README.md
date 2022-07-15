@@ -1,4 +1,4 @@
-# Loudly Audio Task
+# Audio Player App
 
 ## Table of contents
 
@@ -31,11 +31,10 @@ List of features
 - Play/Pause Audio music
 - Stop previous if new audio starts playing
 - Like sending POST request to server
-- Deployed in Netlify
 
- Todos
+Todos
 
- - Unit Testing
- - End to End testing
- - Responsiveness
- - state management(useContext/redux) istead of prop drilling if app grows
+- Unit Testing
+- End to End testing
+- Responsiveness
+- state management(useContext/redux) istead of prop drilling if app grows
